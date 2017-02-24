@@ -1,4 +1,6 @@
 var express = require('express');
+var express = require('express');
+var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -9,7 +11,9 @@ var mongoose = require('mongoose');
 mongoose.connect( 'mongodb://localhost/react-express-starter' );
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var buckets = require('./routes/buckets');
+var lists = require('./routes/lists');
+var items = require('./routes/items');
 var app = express();
 
 // view engine setup
@@ -26,7 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/materialize', express.static(__dirname + '/node_modules/materialize-css/dist/js/'));
 app.use('/jquery', express.static(__dirname + '/node_modules/materialize-css/node_modules/jquery/dist/'));
 app.use('/', index);
-app.use('/users', users);
+app.use('/buckets', buckets);
+app.use('/lists', lists);
+app.use('/items', items);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
